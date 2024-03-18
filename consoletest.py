@@ -6,7 +6,7 @@ picdir = os.path.join(os.path.dirname(os.path.dirname(os.path.realpath(__file__)
 libdir = os.path.join(os.path.dirname(os.path.dirname(os.path.realpath(__file__))), 'lib')
 if os.path.exists(libdir):
     sys.path.append(libdir)
-    
+
 
 from waveshare_epd import epd2in13_V3
 from PIL import Image, ImageDraw, ImageFont
@@ -33,9 +33,22 @@ def create_text_image(epd, text):
     font = ImageFont.truetype('/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf', 12)
 
     # Split the text into lines so it fits on the screen
-    lines = text.split('\n')
+    lines = []
+    words = text.split()
+    current_line = ""
+    for word in words:
+        if len(current_line) + len(word) + 1 <= 36:
+            current_line += word + " "
+        else:
+            lines.append(current_line.strip())
+            current_line = word + " "
+    if current_line:
+        lines.append(current_line.strip())
+
     for i, line in enumerate(lines):
         draw.text((0, i * 15), line, font=font, fill=0)
+
+    return image
 
     return image
 
