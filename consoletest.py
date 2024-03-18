@@ -8,7 +8,7 @@ if os.path.exists(libdir):
     sys.path.append(libdir)
 
 
-from waveshare_epd import epd2in13_V3
+from ./lib/waveshare_epd import epd2in13_V3
 from PIL import Image, ImageDraw, ImageFont
 import time
 
