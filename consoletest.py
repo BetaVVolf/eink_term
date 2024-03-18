@@ -42,6 +42,9 @@ def create_text_image(epd, text):
         else:
             lines.append(current_line.strip())
             current_line = word + " "
+            if len(current_line) > 36:
+                lines.append(current_line[:36])
+                current_line = current_line[36:]
     if current_line:
         lines.append(current_line.strip())
 
