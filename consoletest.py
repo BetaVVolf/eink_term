@@ -34,14 +34,13 @@ def create_text_image(epd, text):
 
     # Split the text into lines so it fits on the screen
     lines = []
-    words = text.split()
     current_line = ""
-    for word in words:
-        if len(current_line) + len(word) + 1 <= 36:
-            current_line += word + " "
+    for char in text:
+        if len(current_line) + len(char) <= 36:
+            current_line += char
         else:
             lines.append(current_line.strip())
-            current_line = word + " "
+            current_line = char
             if len(current_line) > 36:
                 lines.append(current_line[:36])
                 current_line = current_line[36:]
