@@ -30,7 +30,7 @@ def create_text_image(epd, text):
 
     # Define the font and size
     # Adjust the font path or size as needed. Using a smaller font size can display more text.
-    font = ImageFont.truetype('/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf', 12)
+    font = ImageFont.truetype('/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf', 11)
 
     # Split the text into lines so it fits on the screen
     lines = []
@@ -49,8 +49,6 @@ def create_text_image(epd, text):
 
     for i, line in enumerate(lines):
         draw.text((0, i * 15), line, font=font, fill=0)
-
-    return image
 
     return image
 
