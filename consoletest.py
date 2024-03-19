@@ -55,7 +55,7 @@ def create_text_image(epd, text):
 # Display the image on the e-ink display
 def display_image(epd, image):
     epd.display(epd.getbuffer(image))
-    time.sleep(2)  # Display the image for 2 seconds
+    
 
 # Main function to run the program
 def main():
