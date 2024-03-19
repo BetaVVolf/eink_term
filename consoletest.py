@@ -59,11 +59,12 @@ def display_image(epd, image):
 
 # Main function to run the program
 def main():
-    epd = init_display()
     tty1_content = capture_tty1_simulated()  # In a real scenario, replace this with actual tty1 content capture
     text_image = create_text_image(epd, tty1_content)
     display_image(epd, text_image)
-    
+    epd.sleep()  # Put the display to sleep to prevent burn-in
+
 if __name__ == '__main__':
+    epd.init_display()
     while 1:
         main()
