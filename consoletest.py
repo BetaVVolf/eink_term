@@ -14,7 +14,7 @@ import time
 
 # Function to simulate capturing tty1 content (reads from a text file for demonstration)
 def capture_tty1_simulated():
-    typeout = input()
+    typeout = input().encode(sys.stdin.encoding, errors='replace').decode(sys.stdin.encoding)
     return typeout
 
 # Initialize the e-ink display
