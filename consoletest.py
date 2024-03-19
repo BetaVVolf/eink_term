@@ -11,17 +11,14 @@ if os.path.exists(libdir):
 from waveshare_epd import epd2in13_V3
 from PIL import Image, ImageDraw, ImageFont
 import time
+epd = epd2in13_V3.EPD()
+epd.init()
+epd.Clear(0xFF)
 
 # Function to simulate capturing tty1 content (reads from a text file for demonstration)
 def capture_tty1_simulated():
     typeout = input()
     return typeout
-
-# Initialize the e-ink display
-def init_display():
-    epd = epd2in13_V3.EPD()
-    epd.init()
-    return epd
 
 # Create an image from the captured text
 def create_text_image(epd, text):
@@ -59,7 +56,6 @@ def display_image(epd, image):
 
 # Main function to run the program
 def main():
-    epd = init_display()
     tty1_content = capture_tty1_simulated()  # In a real scenario, replace this with actual tty1 content capture
     text_image = create_text_image(epd, tty1_content)
     epd.displayPartBaseImage(epd.getbuffer(text_image))
