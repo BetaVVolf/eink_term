@@ -65,6 +65,6 @@ def main():
     epd.sleep()  # Put the display to sleep to prevent burn-in
 
 if __name__ == '__main__':
-    epd.init_display()
+    epd = init_display()
     while 1:
         main()
